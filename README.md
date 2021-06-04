@@ -8,7 +8,7 @@ This is a project to maximize the score of players on a board. To do this, we br
 RUNTIME FOR CUSTOM TEST CASES
 
 extra test case 1
-
+```
 2
 7 5
 #???.
@@ -25,8 +25,8 @@ extra test case 1
 ?#?#?
 ????.
 .?#.?
-
-
+```
+```
 extra test case 2
 ' ' ' 
 2
@@ -50,7 +50,7 @@ extra test case 2
 ???
 ?##
 ?##
-' ' ' 
+```
 Output 1
 Score:  56
 Runtime for custom cases:  0.00018715858459472656
