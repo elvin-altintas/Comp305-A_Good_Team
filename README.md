@@ -28,7 +28,7 @@ extra test case 1
 
 
 extra test case 2
-
+' ' ' 
 2
 6 4
 #???
@@ -50,7 +50,7 @@ extra test case 2
 ???
 ?##
 ?##
-
+' ' ' 
 Output 1
 Score:  56
 Runtime for custom cases:  0.00018715858459472656
