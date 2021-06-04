@@ -1,3 +1,8 @@
+## A Good Team - Room 28 Term Project
+## Elvin Altıntaş, İrem Zeynep Dündar, Kutluhan Palalıoğlu, Simay Özdemir
+
+## Neighbor number of each spot on the board can be calculated via neighbor_count(i, j, arr)
+## Cornes, edges and middle spots are evaluated differently
 def neighbor_count(i, j, arr):
     neighbor = 0
 
@@ -80,7 +85,7 @@ def neighbor_count(i, j, arr):
 
     return neighbor
 
-
+## Takes the input: test case number, height and width of the board, assignments of spots
 def read_inputs():
     hw = input()
     h = int(hw.split()[0])
@@ -96,7 +101,10 @@ def read_inputs():
 assigned = {}  # spot list
 available = {}  # available for spots
 
-
+## This function checks the pre-assigned spots to determine which checkerboard format is the most suitable
+## Pre-assigned spots belonging to a specific version increases the score of that version, 
+## unavailable spots belonging to a specific version decreases the score of that version.
+## Returns the most suitable chekerboard version
 def format_board(arr):
     v1 = 0
     v2 = 0
@@ -130,7 +138,10 @@ def format_board(arr):
 
     return version
 
-
+## Implements step 1 and 2
+## Fills the available spots fitting the checkerboard version which has no neighbors (Step 1)
+## Fills the available spots having 0 or 1 neighbors (Step 2)
+## Returns the score of the board
 def a_good_team(arr):
     score = 0
     version = format_board(arr)
