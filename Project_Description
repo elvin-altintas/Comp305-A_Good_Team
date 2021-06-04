@@ -1,0 +1,31 @@
+A Good Team
+You are an e-sports game player. In this game you will build a team with various characters. Once you build your team, the game starts. It is played on HxW metered online game board. In each 1x1 meter areas of board (called spots), you can place at most one of your characters. For some spots, you are certainly sure whether or not you should place any of them. However, for some spots you are confused. Also in the game startup, some spots will be already assigned to have a character automatically.
+Initially, every character in your team has performance points 4, however if a character sees any other character anywhere in its up, down, left or right 1-metered spots, it starts to slacken and the character’s performance decreases by 1 point.
+As an awesome e-sports player your goal is to maximize your team’s total performance. Given suitable spots in the game board, place your characters in a way that your team’s total performance points will be maximized!
+Your code should accept an input file with the given format, and should output a file with the given format.
+Input file format:
+T: Number of test cases
+H: Height of the board H, W: width of the board
+For the following H lines:
+W symbols to indicate the spot’s status where ?:Available spot, .:Unavailable spot, #:Automatically character assigned spots
+
+Output file format:
+For the following T lines:
+D: the maximum performance point of your team in this case
+
+Example input file: 
+2
+3 3
+.?.
+.?.
+.#.
+5 8 
+.#...##.
+.##..?.. 
+.###.#.# 
+??#..?.. 
+###?#...
+
+Example output file: 
+8
+42
