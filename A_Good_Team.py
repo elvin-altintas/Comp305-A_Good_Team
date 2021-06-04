@@ -3,6 +3,9 @@
 
 ## Neighbor number of each spot on the board can be calculated via neighbor_count(i, j, arr)
 ## Cornes, edges and middle spots are evaluated differently
+import time
+
+
 def read_sample_output():
   sample_output = {}
   file1 = open("small-testdata.out", "r+")
@@ -230,13 +233,13 @@ if __name__ == "__main__":
     # extra test case 1
     # 2
     # 7 5
-    # # ???.
-    # ??  # ?#
+    # #???.
+    # ??#?#
     # ?????
     # .?..?
-    # ?  # ?#?
+    # ?#?#?
     # ????.
-    # .?  # .?
+    # .?#.?
     # 6 5
     # ??#?#
     # ?????
@@ -247,28 +250,26 @@ if __name__ == "__main__":
 
     # extra test case 2
     # 2
-    # 6
-    # 4
-    # # ???
-    # .  # .?
-    # ??  ##
+    # 6 4
+    # #???
+    # .#.?
+    # ??##
     # ????
     # ????
-    # ?  # ?.
-    # 12
-    # 3
+    # ?#?.
+    # 12 3
     # .?.
-    # ??  #
+    # ??#
     # ??.
     # ???
     # ???
-    # ?  # ?
+    # ?#?
     # .??
-    # # ?.
-    # ??  #
+    # #?.
+    # ??#
     # ???
-    # ?  ##
-    # ?  ##
+    # ?##
+    # ?##
 
     # test = [".?.",
     #         "??#",
@@ -282,19 +283,21 @@ if __name__ == "__main__":
     #         "???",
     #         "?##",
     #         "?##",]
-    #print(a_good_team(test))
-
+    # print(a_good_team(test))
     # test_case = int(input())
     # test_list=list()
     #
     # for i in range(test_case):
     #    test_list.append(read_inputs())
-    #
+    # start = time.time()
     #
     # for test in test_list:
     #    print("Score: ",a_good_team(test))
+    #    end = time.time()
+    #    print("Runtime for custom cases: ", end - start)
 
-    # default test cases
+    ## default test cases
+    start = time.time()
     corr = 0
     sample_test_cases = read_sample_input()
     sample_test_outputs = read_sample_output()
@@ -306,6 +309,10 @@ if __name__ == "__main__":
             "Real Score:", sample_test_outputs[t])
       if sample_test_outputs[t] == a_good_team(sample_test_cases[t]):
         corr += 1
+      end = time.time()
+      print("Runtime for default cases: ", end - start)
       print()
 
     print("Accuracy of the algorithm: ", corr / 100)
+
+
