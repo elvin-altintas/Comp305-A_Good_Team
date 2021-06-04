@@ -10,16 +10,16 @@ def neighbor_count(i, j, arr):
 
         if i == 0:
 
-            if (i, j + 1) in assigned:  # sag
+            if (i, j + 1) in assigned:  # right
                 neighbor += 1
-            if (i + 1, j) in assigned:  # alt
+            if (i + 1, j) in assigned:  # down
                 neighbor += 1
 
         elif i == len(arr) - 1:  # (n-1,1),(n-2,0)
 
-            if (i - 1, j) in assigned:  # ust
+            if (i - 1, j) in assigned:  # up
                 neighbor += 1
-            if (i, j + 1) in assigned:  # sag
+            if (i, j + 1) in assigned:  # right
                 neighbor += 1
 
         else:  # (i-1, j), (i+1,j), (i,j+1)
@@ -50,37 +50,37 @@ def neighbor_count(i, j, arr):
 
         else:
 
-            if (i - 1, j) in assigned:  # ust
+            if (i - 1, j) in assigned:  # up
                 neighbor += 1
-            if (i, j - 1) in assigned:  # sol
+            if (i, j - 1) in assigned:  # left
                 neighbor += 1
-            if (i + 1, j) in assigned:  # alt
+            if (i + 1, j) in assigned:  # down
                 neighbor += 1
     elif i == 0:
 
-        if (i, j + 1) in assigned:  # sag
+        if (i, j + 1) in assigned:  # right
             neighbor += 1
-        if (i, j - 1) in assigned:  # sol
+        if (i, j - 1) in assigned:  # left
             neighbor += 1
-        if (i + 1, j) in assigned:  # alt
+        if (i + 1, j) in assigned:  # down
             neighbor += 1
     elif i == len(arr) - 1:
 
-        if (i, j + 1) in assigned:  # sag
+        if (i, j + 1) in assigned:  # right
             neighbor += 1
-        if (i, j - 1) in assigned:  # sol
+        if (i, j - 1) in assigned:  # left
             neighbor += 1
-        if (i - 1, j) in assigned:  # ust
+        if (i - 1, j) in assigned:  # up
             neighbor += 1
     else:
 
-        if (i, j + 1) in assigned:  # sag
+        if (i, j + 1) in assigned:  # right
             neighbor += 1
-        if (i, j - 1) in assigned:  # sol
+        if (i, j - 1) in assigned:  # left
             neighbor += 1
-        if (i - 1, j) in assigned:  # ust
+        if (i - 1, j) in assigned:  # up
             neighbor += 1
-        if (i + 1, j) in assigned:  # alt
+        if (i + 1, j) in assigned:  # down
             neighbor += 1
 
     return neighbor
