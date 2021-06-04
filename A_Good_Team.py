@@ -1,86 +1,94 @@
+## A Good Team - Room 28 Term Project
+## Elvin Altintas, Irem Zeynep Dundar, Kutluhan Palalioglu, Simay Ozdemir
+## Efforts in this below implementation belongs to all of the group members.
+
+
+## Neighbor number of each spot on the board can be calculated via neighbor_count(i, j, arr)
+## Cornes, edges and middle spots are evaluated differently
 def neighbor_count(i,j,arr):
   neighbor = 0
 
-  if j == 0 :
+  if j == 0 : #leftmost column
 
-    if i == 0:
+    if i == 0: #upper left corner
 
-      if (i,j+1) in assigned: # sag
+      if (i,j+1) in assigned: 
         neighbor+=1
-      if (i+1, j) in assigned: # alt
+      if (i+1, j) in assigned:
         neighbor+= 1
 
-    elif i == len(arr)-1: #(n-1,1),(n-2,0)
+    elif i == len(arr)-1: #lower left corner
 
-      if (i-1, j) in assigned: # ust
+      if (i-1, j) in assigned: 
         neighbor += 1
-      if (i, j+1) in assigned: # sag
-        neighbor += 1
-
-    else: # (i-1, j), (i+1,j), (i,j+1)
-
-      if (i-1, j) in assigned: # ust
-        neighbor += 1
-      if (i+1, j) in assigned: # alt
-        neighbor += 1
-      if (i, j + 1) in assigned: # sag
-        neighbor += 1
-  elif j == len(arr[0])-1:
-
-    if i == 0:
-
-      if (i, j - 1) in assigned:  # sol
+      if (i, j+1) in assigned: 
         neighbor += 1
 
-      if (i + 1, j) in assigned:  # alt
+    else: #leftmost column, middle spots
+
+      if (i-1, j) in assigned: 
+        neighbor += 1
+      if (i+1, j) in assigned: 
+        neighbor += 1
+      if (i, j + 1) in assigned:
+        neighbor += 1
+  elif j == len(arr[0])-1: #rightmost column
+
+    if i == 0: #upper right corner
+
+      if (i, j - 1) in assigned:  
+        neighbor += 1
+
+      if (i + 1, j) in assigned: 
         neighbor += 1
 
 
-    elif i == len(arr) - 1:
+    elif i == len(arr) - 1: #lower right corner
 
-      if (i - 1, j) in assigned:  # ust
+      if (i - 1, j) in assigned:  
         neighbor += 1
-      if (i, j - 1) in assigned:  # sol
+      if (i, j - 1) in assigned: 
         neighbor += 1
 
-    else:
+    else: #rightmost column, middle spots
 
-      if (i - 1, j) in assigned:  # ust
+      if (i - 1, j) in assigned:  
         neighbor += 1
-      if (i, j - 1) in assigned:  # sol
+      if (i, j - 1) in assigned:  
         neighbor += 1
-      if (i+1, j) in assigned: # alt
+      if (i+1, j) in assigned: 
         neighbor += 1
-  elif i == 0:
+  elif i == 0: #uppermost line, middle spots
 
-    if (i, j+1) in assigned:  # sag
+    if (i, j+1) in assigned:  
       neighbor += 1
-    if (i, j - 1) in assigned:  # sol
+    if (i, j - 1) in assigned:  
       neighbor += 1
-    if (i+1, j) in assigned: # alt
+    if (i+1, j) in assigned: 
       neighbor += 1
-  elif i == len(arr)-1:
+  elif i == len(arr)-1: #lowermost line, middle spots
 
-    if (i, j+1) in assigned:  # sag
+    if (i, j+1) in assigned:  
       neighbor += 1
-    if (i, j - 1) in assigned:  # sol
+    if (i, j - 1) in assigned:  
       neighbor += 1
-    if (i-1, j) in assigned: # ust
+    if (i-1, j) in assigned: 
       neighbor += 1
-  else:
+  else: #middle spots
 
-    if (i, j+1) in assigned:  # sag
+    if (i, j+1) in assigned:
       neighbor += 1
-    if (i, j - 1) in assigned:  # sol
+    if (i, j - 1) in assigned: 
       neighbor += 1
-    if (i-1, j) in assigned: # ust
+    if (i-1, j) in assigned: 
       neighbor += 1
-    if (i+1, j) in assigned: # alt
+    if (i+1, j) in assigned: 
       neighbor += 1
 
-  return neighbor
+  return neighbor 
 
 
+## Takes the input: test case number, height and width of the board, assignments of spots
 def read_inputs():
   hw = input()
   h = int(hw.split()[0])
@@ -89,13 +97,16 @@ def read_inputs():
 
   for k in range(h):
     line = input()
-    arr.append(line)#line)# line.split())
+    arr.append(line)
   return arr
 
-assigned = {} # spot list
-available = {} # available for spots
+assigned = {} # assigned spot list
+available = {} # available spot list
 
-
+## This function checks the pre-assigned spots to determine which checkerboard format is the most suitable
+## Pre-assigned spots belonging to a specific version increases the score of that version, 
+## unavailable spots belonging to a specific version decreases the score of that version.
+## Returns the most suitable chekerboard version
 def format_board(arr):
 
   v1 = 0
@@ -127,14 +138,18 @@ def format_board(arr):
     version = 1
   else:
     version = 2
-  print("Kazanan version: ", version)
+  print("Winner version: ", version)
   print("version1: ", v1)
   print("version2: ", v2)
-  print("negatif version1: ", nv1)
-  print("negatif version2: ", nv2)
+  print("negatve version1: ", nv1)
+  print("negative version2: ", nv2)
   return version
 
 
+## Implements step 1 and 2
+## Fills the available spots fitting the checkerboard version which has no neighbors (Step 1)
+## Fills the available spots having 0 or 1 neighbors (Step 2)
+## Returns the score of the board
 def a_good_team(arr):
 
   score = 0
@@ -149,7 +164,7 @@ def a_good_team(arr):
   # print("Beginning | Available:",available)
 
 
-  # step 1
+  # Step 1
   print("Test for STEP 1")
   temp_available1 =  available.copy()
   print("Available", temp_available1)
@@ -168,7 +183,7 @@ def a_good_team(arr):
   print("Total Assigned in Step 1")
   visualize(assigned, arr)
 
-  # step 2
+  # Step 2
   print("\n\n")
   print("Test for STEP 2")
   print("Available", temp_available1)
@@ -182,7 +197,7 @@ def a_good_team(arr):
 
       assigned[(i, j)] = 4
       available.pop((i, j))
-      # neden 5 tane 4
+      
 
   print("Total Assigned in Step 2")
   visualize(assigned, arr)
@@ -201,7 +216,7 @@ def a_good_team(arr):
 
   return score
 
-
+## In order to visualize the board for debugging
 def visualize(assigned, arr):
 
   print("TEST in VISUALIZE")
