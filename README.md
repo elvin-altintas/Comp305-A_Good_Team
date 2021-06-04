@@ -26,9 +26,9 @@ extra test case 1
 ????.
 .?#.?
 ```
-```
+
 extra test case 2
-' ' ' 
+```
 2
 6 4
 #???
